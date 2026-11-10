@@ -1,0 +1,16 @@
+{
+  "name": "battery-ai-local",
+  "private": true,
+  "scripts": {
+    "dev": "npm run frontend:dev",
+    "install:all": "npm --prefix backend install && npm --prefix frontend install",
+    "ai:install": ".\\.venv\\Scripts\\python.exe -m pip install -r ai-service\\requirements.txt",
+    "backend:dev": "npm --prefix backend run dev",
+    "frontend:dev": "npm --prefix frontend run dev",
+    "ai:dev": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/start-ai-local.ps1",
+    "dev:all": "concurrently -n AI,BACKEND,FRONTEND -c yellow,cyan,green \"npm run ai:dev\" \"npm run backend:dev\" \"npm run frontend:dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
